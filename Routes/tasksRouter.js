@@ -7,6 +7,7 @@ const {
   postTasks,
   getOneTaskById,
   deleteOneTaskById,
+  updateOneById,
 } = require("../controllers/tasksController");
 
 tasksRouter.get("/", getTasks);
@@ -14,6 +15,8 @@ tasksRouter.get("/", getTasks);
 tasksRouter.post("/", postTasks);
 
 tasksRouter.get("/:id", getOneTaskById);
+
+tasksRouter.put("/:id", updateOneById);
 
 tasksRouter.delete("/:id", deleteOneTaskById);
 

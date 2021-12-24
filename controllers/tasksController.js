@@ -1,4 +1,3 @@
-const { idText } = require("typescript");
 const Task = require("../models/task");
 const logger = require("../utils/logger");
 
@@ -43,9 +42,15 @@ const deleteOneTaskById = async (request, response) => {
     .catch((error) => next(error));
 };
 
+const updateOneById = async (request, response) => {
+  logger.info(request.body);
+  logger.info(request.params);
+};
+
 module.exports = {
   getTasks: getTasks,
   postTasks: postTasks,
   getOneTaskById: getOneTaskById,
   deleteOneTaskById: deleteOneTaskById,
+  updateOneById: updateOneById,
 };
