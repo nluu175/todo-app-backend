@@ -1,7 +1,7 @@
 // user-defined
 const app = require("./app");
-const logger = require("./Utils/logger");
-const config = require("./Utils/config");
+const logger = require("./utils/logger");
+const config = require("./utils/config");
 
 // libs
 const http = require("http");

@@ -2,9 +2,9 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
-const tasksRouter = require("./Routes/tasksRouter");
-const config = require("./Utils/config");
-const logger = require("./Utils/logger");
+const tasksRouter = require("./routes/tasksRouter");
+const config = require("./utils/config");
+const logger = require("./utils/logger");
 
 const app = express();
 
