@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const tasksRouter = require("./routes/tasksRouter");
 const config = require("./utils/config");
@@ -21,6 +22,7 @@ mongoose
   });
 
 // app.use(express.static("build"));
+app.use(cors());
 app.use(express.json());
 
 // Routes
