@@ -17,6 +17,10 @@ const taskSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  completed: {
+    type: Boolean,
+    required: false,
+  },
 });
 
 taskSchema.set("toJSON", {

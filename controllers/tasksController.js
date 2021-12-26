@@ -11,8 +11,9 @@ const postTasks = async (request, response, next) => {
   const task = new Task({
     content: body.content,
     createdDate: new Date(),
-    dueDate: new Date(),
+    dueDate: body.dueDate || new Date(),
     important: body.important || false,
+    completed: body.completed || false,
   });
 
   task
