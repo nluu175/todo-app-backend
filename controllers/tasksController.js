@@ -44,8 +44,14 @@ const deleteOneTaskById = async (request, response) => {
 };
 
 const updateOneById = async (request, response) => {
-  logger.info(request.body);
-  logger.info(request.params);
+  const { id } = request.params;
+
+  await Task.findByIdAndUpdate(id, request.body)
+    .then((returnedObject) => {
+      console.log(returnedObject);
+      response.status(200).end();
+    })
+    .catch((error) => next(error));
 };
 
 module.exports = {
