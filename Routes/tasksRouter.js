@@ -1,46 +1,23 @@
 const tasksRouter = require("express").Router();
-const Task = require("../Models/task");
-const logger = require("../Utils/logger");
+const Task = require("../models/task");
+const logger = require("../utils/logger");
 
-tasksRouter.get("/", async (request, response, next) => {
-  const allTasks = await Task.find({});
-  response.json(allTasks);
-});
+const {
+  getTasks,
+  postTasks,
+  getOneTaskById,
+  deleteOneTaskById,
+  updateOneById,
+} = require("../controllers/tasksController");
 
-tasksRouter.post("/", (request, response, next) => {
-  const body = request.body;
-  const task = new Task({
-    content: body.content,
-    createdDate: new Date(),
-    dueDate: new Date(),
-    important: body.important || false,
-  });
+tasksRouter.get("/", getTasks);
 
-  task
-    .save()
-    .then((savedTask) => {
-      logger.info(savedTask.toJSON());
-      response.json(savedTask.toJSON());
-    })
-    .catch((error) => next(errror));
-});
+tasksRouter.post("/", postTasks);
 
-tasksRouter.get("/:id", async (request, response) => {
-  const { id } = request.params;
-  const getTask = await Task.findById(id).exec();
-  logger.info(getTask);
-  response.json(getTask);
-});
+tasksRouter.get("/:id", getOneTaskById);
 
-tasksRouter.delete("/:id", (request, response) => {
-  console.log("Received Delete request!");
-  // logger.info(request.params.id);
+tasksRouter.put("/:id", updateOneById);
 
-  // await Task.findByIdAndRemove(id)
-  //   .then(() => {
-  //     response.status(204).end();
-  //   })
-  //   .catch((error) => next(error));
-});
+tasksRouter.delete("/:id", deleteOneTaskById);
 
 module.exports = tasksRouter;
